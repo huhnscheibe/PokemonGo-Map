@@ -17,6 +17,7 @@ from . import config
 log = logging.getLogger(__name__)
 
 def parse_unicode(bytestring):
+    return bytestring
     decoded_string = bytestring.decode(sys.getfilesystemencoding())
     return decoded_string
 
@@ -68,12 +69,12 @@ def get_args():
     if args.only_server:
         if args.location is None:
             parser.print_usage()
-            print sys.argv[0] + ': error: arguments -l/--location is required'
+            print(sys.argv[0] + ': error: arguments -l/--location is required')
             sys.exit(1);
     else:
         if (args.username is None or args.location is None or args.step_limit is None):
             parser.print_usage()
-            print sys.argv[0] + ': error: arguments -u/--username, -l/--location, -st/--step-limit are required'
+            print(sys.argv[0] + ': error: arguments -u/--username, -l/--location, -st/--step-limit are required')
             sys.exit(1);
 
         if config["PASSWORD"] is None and args.password is None:
